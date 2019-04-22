@@ -31,7 +31,7 @@ def=
 
 %3 A --> B : {Succ(Nb)}_|Kab|
 	     State':= 4 /\ Snd({Succ(Nb')}_Kab)
-			%%/\ witness(A,B,bob_alice_nb,Nb')
+			/\ witness(A,B,bob_alice_nb,Nb')
 
   %% Receving the second response of B
 
@@ -40,9 +40,9 @@ def=
 
 %5 A --> B : {Nap}_|Kpab|
 	     State':= 6 
-                              %%/\ request(A,B,alice_bob_na,Na)
+                              /\ request(A,B,alice_bob_na,Na)
 									
- /\ request(A,B,alice_bob_kpab,Kpab')
+                              /\ request(A,B,alice_bob_kpab,Kpab')
 
 			 
 
@@ -73,7 +73,7 @@ def=
 %2 B --> A : {Succ(Na), Nb}_|Kab|
 		State':= 3 /\ Nb':= new() 
 			/\ Snd({Succ(Na').Nb'}_Kab)
-			%%/\ witness(B,A,alice_bob_na,Na')
+			/\ witness(B,A,alice_bob_na,Na')
 
 %3 A --> B : {Succ(Nb)}_|Kab|  
             2. State = 3  /\ Rcv({Succ(Nb)}_Kab) =|>	
@@ -83,8 +83,8 @@ def=
 State' := 5 /\ Kpab' := new() /\ Nbp' := new() /\
 Snd({Kpab'.Nbp'.Na}_Kab) /\
 secret(Kpab',kpab,{A,B}) 
-/\ secret(Nbp',nbp,{A,B}) /\
-request(B,A,bob_alice_nb,Nb) 
+/\ secret(Nbp',nbp,{A,B})
+/\request(B,A,bob_alice_nb,Nb)  
 /\ witness(B,A,alice_bob_na,Na) /\
 witness(B,A,alice_bob_kpab,Kpab')
 
@@ -123,8 +123,7 @@ def=
   composition
      	 andrewSRPC(a,b,kab,succ)
  	/\ andrewSRPC(a,b,kab,succ)
- 	%%/\ andrewSRPC(a,i,kai,succ)
-	%%/\ andrewSRPC(i,b,kib,succ)
+ 	
 
 end role
 
@@ -134,10 +133,10 @@ end role
 goal
 
 	secrecy_of nbp,kpab 
-%%      authentication_on bob_alice_nb
-%%	authentication_on alice_bob_na
+        authentication_on bob_alice_nb
+	authentication_on alice_bob_na
 	authentication_on alice_bob_kpab
-%%	weak_authentication_on alice_bob_kpab
+	
 
 end goal
 
