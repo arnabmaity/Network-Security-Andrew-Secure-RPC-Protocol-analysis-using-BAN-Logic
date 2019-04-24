@@ -32,6 +32,7 @@ def=
 %3 A --> B : {Succ(Nb)}_|Kab|
 	     State':= 4 /\ Snd({Succ(Nb')}_Kab)
 			/\ witness(A,B,bob_alice_nb,Nb')
+			/\request(A,B,alice_bob_na,Na)
 
   %% Receving the second response of B
 
