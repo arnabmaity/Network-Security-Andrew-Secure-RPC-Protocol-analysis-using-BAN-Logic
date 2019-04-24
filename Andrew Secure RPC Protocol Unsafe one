@@ -31,6 +31,8 @@ def=
 %1 A --> B : A, {Na}_|Kab|
 	     State':= 2 /\ Na':= new() 
 			/\ Snd(A.{Na'}_Kab)
+			
+			
 
   %% Receving the first response of B
 
@@ -41,6 +43,7 @@ def=
 %3 A --> B : {Succ(Nb)}_|Kab|
 	     State':= 4 /\ Snd({Succ(Nb')}_Kab)
 			/\ witness(A,B,bob_alice_nb,Nb')
+			/\ request(A,B,alice_bob_na,Na)
 
   %% Receving the second response of B
 
